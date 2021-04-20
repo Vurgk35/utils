@@ -9,40 +9,17 @@ import java.security.NoSuchAlgorithmException;
 public final class VerifyUtils {
 
 	/**
-	 * 请求订单签名（微信H5、微信公众号、支付宝H5）
+	 * 请求订单签名
 	 * @param amount 金额
 	 * @param channel 商户ID
-	 * @param subject 商品名称
-	 * @param url 支付成功后跳回的地址
 	 * @param key 商户密钥
 	 * @return
 	 * @throws NoSuchAlgorithmException
 	 */
-	public static String sign(Integer amount, Integer channel, String subject, String url, String key) throws NoSuchAlgorithmException {
+	public static String sign(Integer amount, Integer channel, String key) throws NoSuchAlgorithmException {
 		StringBuilder sb = new StringBuilder()
 		.append("amount=").append(amount).append("&")
 		.append("channel=").append(channel).append("&")
-		.append("subject=").append(subject).append("&")
-		.append("url=").append(url).append("&")
-		.append("key=").append(key);
-		return md5(sb.toString());
-	}
-
-	/**
-	 * 请求订单签名（微信APP、支付宝APP）
-	 * @param amount 金额
-	 * @param channel 商户ID
-	 * @param subject 商品名称
-	 * @param url 支付成功后跳回的地址
-	 * @param key 商户密钥
-	 * @return
-	 * @throws NoSuchAlgorithmException
-	 */
-	public static String sign(Integer amount, Integer channel, String subject, String key) throws NoSuchAlgorithmException {
-		StringBuilder sb = new StringBuilder()
-		.append("amount=").append(amount).append("&")
-		.append("channel=").append(channel).append("&")
-		.append("subject=").append(subject).append("&")
 		.append("key=").append(key);
 		return md5(sb.toString());
 	}
